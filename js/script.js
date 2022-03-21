@@ -18,10 +18,12 @@ let pokemonList = [
 
 for (let i=0; i < pokemonList.length; i++){
     if (pokemonList[i].height <48 && pokemonList[i].height >46){
-      console.log(pokemonList[i].name + " (height: 47)");
+      console.log(pokemonList[i].name + ' (height: 47)');
     }else if (pokemonList[i].height <68){
-      console.log(pokemonList[i].name + " (height: 67)");
+      console.log(pokemonList[i].name + ' (height: 67)');
     }else {
-      console.log(pokemonList[i].name + " (height: 59)");
+      console.log(pokemonList[i].name + ' (height: 59)');
     }
+    document.write(pokemonList[i].name)
   }
+
