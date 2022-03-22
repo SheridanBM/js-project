@@ -19,15 +19,12 @@ let pokemonList = [
 // printArrayDetails function declaration
 function printArrayDetails(){
     for (let i=0; i < pokemonList.length; i++){
-
-        document.write('<p>' + pokemonList[i].name + '</p>');
-
-        if (pokemonList[i].height === 47){
-        console.log(pokemonList[i].name + ' (height: 47)');
-        }else if (pokemonList[i].height === 67){
-        console.log(pokemonList[i].name + ' (height: 67)');
+        if (pokemonList[i].height < 50){
+            document.write('<p>' + pokemonList[i].name + " - a small one" + '</p>');
+        }else if (pokemonList[i].height > 60){
+            document.write('<p>' + pokemonList[i].name + " - a big one" + '</p>');
         }else {
-        console.log(pokemonList[i].name + ' (height: 59)');
+            document.write('<p>' + pokemonList[i].name + " - is normal size" + '</p>');
         }
     }
 }
