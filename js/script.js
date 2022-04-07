@@ -1,4 +1,4 @@
-let pokemonList = [
+/*let pokemonList = [
     {
         name: 'Slowpoke',
         height: 47,
@@ -32,3 +32,51 @@ function printArrayDetails(){
 // Calling printArrayDetails function twice
 printArrayDetails();
 printArrayDetails();
+
+(function(){
+
+    let pokemonList = [
+        {
+            name: 'Slowpoke',
+            height: 47,
+            type: ['water', 'psychic']
+        },
+        {
+            name: 'Rapidash',
+            height: 67,
+            type: 'fire'
+        },
+        {
+            name: 'Grimmsnarl',
+            height: 59,
+            type: ['dark', 'fairy']
+        } 
+    ];
+
+    pokemonList.forEach(function(pokemon) {
+        document.write('<p>' + pokemon.name + ' is ' + pokemon.height + ' inches tall' + '</p>');
+    });
+})()
+*/
+
+let pokemonList = [
+    {
+        name: 'Slowpoke',
+        height: 47,
+        type: ['water', 'psychic']
+    },
+    {
+        name: 'Rapidash',
+        height: 67,
+        type: 'fire'
+    },
+    {
+        name: 'Grimmsnarl',
+        height: 59,
+        type: ['dark', 'fairy']
+    } 
+];
+
+Object.keys(pokemonList).forEach(function(property) {
+    document.write(property + ': ' + pokemonList[property] + '<br>');
+  });
