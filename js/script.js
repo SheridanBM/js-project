@@ -59,24 +59,62 @@ printArrayDetails();
 })()
 */
 
-let pokemonList = [
-    {
-        name: 'Slowpoke',
-        height: 47,
-        type: ['water', 'psychic']
-    },
-    {
-        name: 'Rapidash',
-        height: 67,
-        type: 'fire'
-    },
-    {
-        name: 'Grimmsnarl',
-        height: 59,
-        type: ['dark', 'fairy']
-    } 
-];
+(function(){
 
-Object.keys(pokemonList).forEach(function(property) {
-    document.write(property + ': ' + pokemonList[property] + '<br>');
-  });
+    let pokemonRepository = (function () {
+        let pokemonList = [
+            {
+                name: 'Slowpoke',
+                height: 47,
+                type: ['water', 'psychic']
+            },
+            {
+                name: 'Rapidash',
+                height: 67,
+                type: 'fire'
+            },
+            {
+                name: 'Grimmsnarl',
+                height: 59,
+                type: ['dark', 'fairy']
+            } 
+        ];
+      
+        function add(pokemon) {
+          pokemonList.push(pokemon);
+        }
+      
+        function getAll() {
+          return pokemonList;
+        }
+      
+        return {
+          add: add,
+          getAll: getAll
+        };
+})();
+      
+console.log(pokemonRepository.getAll()); 
+
+function(property)(
+    let pokemonList = [
+        {
+            name: 'Slowpoke',
+            height: 47,
+            type: ['water', 'psychic']
+        },
+        {
+            name: 'Rapidash',
+            height: 67,
+            type: 'fire'
+        },
+        {
+            name: 'Grimmsnarl',
+            height: 59,
+            type: ['dark', 'fairy']
+        } 
+    ];
+
+        Object.keys(pokemonList).forEach(function(property) {
+            document.write(property + ': ' + pokemonList[property] + '<br>');
+    });
