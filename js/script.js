@@ -33,7 +33,7 @@ let pokemonRepository = (function () {
     function getAll() {
       return repository;
     }
-    
+
     function addListItem(pokemon){
         let pokemonList = document.querySelector(".pokemon-list");
         let listpokemon = document.createElement("li");
@@ -48,7 +48,7 @@ let pokemonRepository = (function () {
     }
 
     function showDetails(pokemon){
-        onsole.log(pokemonRepository.getAll());
+        console.log(pokemonRepository.getAll());
     }
 
     return {
