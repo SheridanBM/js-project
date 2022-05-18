@@ -11,13 +11,16 @@
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    background-color: white;
+    background-color: #FBC32D ;
     color: black;
-    border: 2px solid #4caf50;
+    border: 4px solid #2673DC ;
+    border-radius: 5px;
+    text-transform: capitalize;
+    width: 250px;
   }
 
   body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; 
   }
   
   #modal-container {
@@ -77,3 +80,18 @@
     /* CSS for modal container - add your own desired CSS styles here */
     display: block;
   }
+
+  .pokemon-list {
+    list-style: none;
+    display: inline-block;
+    display: table; 
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  h1 {
+    display: table; 
+    margin: 0 auto;
+    text-align: left; 
+  }
+
