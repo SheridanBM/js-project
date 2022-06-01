@@ -19,8 +19,9 @@ let pokemonRepository = (function () {
     }
 
     function addListItem(pokemon){
-        let pokemonList = document.querySelector(".pokemon-list");
-        let listpokemon = document.createElement("li");
+        let pokemonList = document.querySelector('.list-group');
+        let listpokemon = document.createElement('li');
+        listpokemon.classList.add("col-sm-8");
         let button = document.createElement("button");
         button.innerText = pokemon.name;
         button.classList.add("button-class");
@@ -30,6 +31,14 @@ let pokemonRepository = (function () {
           showDetails(pokemon);
         });
     }
+
+    button.classList.add('btn', 'btn-block', 'btn-outline-primary');
+    button.classList.add('m-1', 'bg-blue', 'text-capitalize');
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '.modal');
+
+    listItem.appendChild(button);
+    ul.appendChild(listItem);
 
     function loadList() {
       return fetch(apiUrl).then(function (response) {
@@ -69,7 +78,7 @@ let pokemonRepository = (function () {
 
     //Closes modal with Escape button
     window.addEventListener('keydown', (e) => {
-      let modalContainer = document.querySelector('#modal-container');
+      let modalContainer = document.querySelector('.modal-content');
       if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
         hideModal();  
       }
@@ -94,49 +103,30 @@ let pokemonRepository = (function () {
     };
 
     function showModal(pokemon) {
-      let modalContainer = document.querySelector('#modal-container');
+      let modalTitle = $('modal-title');
+      let modalBody = $('.modal-body');
     
-      // Clear all existing modal content
-      modalContainer.innerHTML = '';
-    
-      let modal = document.createElement('div');
-      modal.classList.add('modal');
-    
-      let titleElement = document.createElement('h1');
-      titleElement.classList.add('pokemon-title-name');
-      titleElement.innerText = pokemon.name.toLowerCase();
+      modalTitle.empty();
+      modalBody.empty();
 
-      let contentElement = document.createElement('p');
-      contentElement.classList.add('pokemon-content-height');
-      contentElement.innerText = `Height: ${pokemon.height}`;
-  
-      let imageElement = document.createElement('img');
-      imageElement.classList.add('pokemon-front-image');
-      imageElement.setAttribute('src', pokemon.imageUrl);
-      imageElement.setAttribute('alt', pokemon.name + ' image');
+      //creating name as title in the modal
+      let titleElement = $('<h1>' + item.name + '</h1>');
+      //adding picture of pokemon to modal
+      let imageElement = $()
+      //adding height of pokemon to modal
+      let contentElement = $('<p>' + 'height :' + pokemon.height + '</p>');
 
-      let closeButtonElement = document.createElement('button');
-      closeButtonElement.classList.add('modal-close');
-      closeButtonElement.innerText = 'Close';
-      closeButtonElement.addEventListener('click', hideModal); 
-      
-      modalContainer.addEventListener('click', (e) => {
-        // Since this is also triggered when clicking INSIDE the modal
-        // We only want to close if the user clicks directly on the overlay
-        let target = e.target;
-        if (target === modalContainer) {
-          hideModal();
-        }
-      });
-    
-      modal.appendChild(closeButtonElement);//Add close button to modal
-      modal.appendChild(titleElement);//Add title to modal
+
+
+      modalTitle.appendChild(titleElement);//Add title to modal
       modal.appendChild(contentElement);//Add content to modal
       modal.appendChild(imageElement);//Add image to modal
       modalContainer.appendChild(modal)
     
       modalContainer.classList.add('is-visible');
     }
+
+    
 
     function hideModal() {
       let modalContainer = document.querySelector('#modal-container');
