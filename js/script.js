@@ -19,7 +19,7 @@ let pokemonRepository = (function () {
     }
 
     function addListItem(pokemon){
-        let pokemonList = document.querySelector('.list-group');
+        let pokemonList = document.querySelector('ul');
         let listpokemon = document.createElement('li');
         listpokemon.classList.add("col-sm-8");
         let button = document.createElement("button");
@@ -30,12 +30,12 @@ let pokemonRepository = (function () {
         button.addEventListener('click', function (event) {
           showDetails(pokemon);
         });
-    }
 
     button.classList.add('btn', 'btn-block', 'btn-outline-primary');
     button.classList.add('m-1', 'bg-blue', 'text-capitalize');
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '.modal');
+  }
 
     listItem.appendChild(button);
     ul.appendChild(listItem);
@@ -110,11 +110,12 @@ let pokemonRepository = (function () {
       modalBody.empty();
 
       //creating name as title in the modal
-      let titleElement = $('<h1>' + item.name + '</h1>');
+      let titleElement = $(`<h1>${pokemon.name}</h1>`);
       //adding picture of pokemon to modal
-      let imageElement = $()
+      let imageElement = $(
+        `<img class="modal-img mx-auto" src="${pokemon.svgUrl}" alt="Picture of the pokemon ${pokemon.name}">`);
       //adding height of pokemon to modal
-      let contentElement = $('<p>' + 'height :' + pokemon.height + '</p>');
+      let contentElement = $(`<p class="ml-4 mt-3 mb-0">Height: ${pokemon.height}</p>`);
 
 
 
@@ -134,8 +135,12 @@ let pokemonRepository = (function () {
     }
   })();
 
-pokemonRepository.loadList().then(function () {
-  pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon);
-  });
+// Create & display list of Pokemon
+pokemonRepository.loadList().then(() => {
+  pokemonRepository
+    .getAll()
+    .sort((a, b) => a.name > b.name)
+    .forEach((pokemon) => {
+      pokemonRepository.addListItem(pokemon);
+    });
 });

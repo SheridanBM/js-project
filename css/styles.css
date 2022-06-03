@@ -72,11 +72,11 @@
     margin-bottom: 0;
   }
   
-  #modal-container {
+  .modal-content {
     display: none;
   }
   
-  #modal-container.is-visible {
+  .modal-content.is-visible {
     /* CSS for modal container - add your own desired CSS styles here */
     display: block;
   }
@@ -96,5 +96,5 @@
   }
 
 #show-modal {
-  display: none;
+  display: one;
 }
